@@ -1,3 +1,4 @@
+// Hero Component - Main landing section
 import React from 'react';
 import BookingWidget from './BookingWidget';
 import { ShieldCheck, Zap } from 'lucide-react';
@@ -17,14 +18,24 @@ const Hero = () => {
                 />
             </div>
 
-            {/* --- MOBILE HEADER (Title) --- */}
-            <div className="md:hidden pt-28 pb-4 w-full text-center z-20 px-4">
-                <h1 className="text-3xl font-black font-heading text-slate-900 leading-tight mb-2">
-                    Stop Paying Surge.<br />Start Moving Fair.
-                </h1>
-                <p className="text-slate-600 text-sm font-medium leading-relaxed px-2 mt-2">
-                    Book Autos, Cabs, and Trucks at flat rates all day, every day. Whether you need to reach the office or shift your home, Transporter is India's most honest movement app.
-                </p>
+            {/* --- MOBILE HEADER (Title) with Background --- */}
+            <div className="md:hidden pt-28 pb-4 w-full text-center z-20 px-4 relative">
+                {/* Background Image for Mobile Header Only */}
+                <div className="absolute inset-0 z-0">
+                    <img
+                        src={HeroBg}
+                        alt="Background"
+                        className="w-full h-full object-cover object-center"
+                    />
+                </div>
+                <div className="relative z-10">
+                    <h1 className="text-3xl font-black font-heading text-white leading-tight mb-2 drop-shadow-lg">
+                        Stop Paying Surge.<br />Start Moving Fair.
+                    </h1>
+                    <p className="text-white text-sm font-medium leading-relaxed px-2 mt-2 drop-shadow-md">
+                        Book Autos, Cabs, and Trucks at flat rates all day, every day. Whether you need to reach the office or shift your home, Transporter is India's most honest movement app.
+                    </p>
+                </div>
             </div>
 
             {/* --- DESKTOP TITLE (Updated) --- */}

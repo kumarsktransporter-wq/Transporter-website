@@ -14,6 +14,7 @@ import noSurgeImg from '../assets/No Surge Pricing, Ever.png';
 import superAppImg from '../assets/superapp.png';
 import paymentImg from '../assets/payment .png';
 import liveTrackingImg from '../assets/livetracking.png';
+import appBgImg from '../assets/main2.jpg';
 
 const FeatureCard = ({ image, title, desc, delay }) => (
     <motion.div
@@ -163,82 +164,86 @@ const Home = () => {
             </section>
 
             {/* App Download Section - WHITE BG */}
-            <section className="py-24 bg-white relative overflow-hidden w-full">
-                <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
-                    <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900">
+            <section className="py-4 md:py-8 bg-white relative overflow-hidden w-full">
+                {/* Background Image with 50% Opacity */}
+                <div className="absolute inset-0 z-0 opacity-50">
+                    <img src={appBgImg} alt="" className="w-full h-full object-cover" />
+                </div>
+                <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
+                    <div className="text-center mb-12 md:mb-16 space-y-4">
+                        <h2 className="text-2xl md:text-5xl font-heading font-bold text-slate-900 px-4">
                             Ready to get to your destination at the best price?
                         </h2>
-                        <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+                        <p className="text-slate-500 text-base md:text-lg max-w-2xl mx-auto px-4">
                             Join thousands of Indians choosing fair prices and reliable rides. Download Transporter Today.
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {/* Customer App */}
-                        <div className="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all group cursor-pointer border border-gray-100">
-                            <div className="flex items-center justify-between mb-6">
-                                <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-sm border border-gray-200">
+                        <div className="bg-gray-50 p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all group cursor-pointer border border-gray-100">
+                            <div className="flex flex-col md:flex-row items-center md:justify-between mb-6 gap-4">
+                                <div className="w-24 h-24 md:w-32 md:h-32 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-sm border border-gray-200 shrink-0">
                                     <img src={customerAppImg} alt="Transporter Customer App" className="w-full h-full object-contain" />
                                 </div>
-                                <div className="text-purple-600 group-hover:translate-x-2 transition-transform">
+                                <div className="hidden md:block text-purple-600 group-hover:translate-x-2 transition-transform">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M5 12h14M12 5l7 7-7 7" />
                                     </svg>
                                 </div>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Transporter</h3>
-                            <p className="text-gray-600 text-sm mb-6">Book rides, track your journey, and enjoy seamless transportation</p>
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 text-center md:text-left">Transporter</h3>
+                            <p className="text-gray-600 text-sm mb-6 text-center md:text-left">Book rides, track your journey, and enjoy seamless transportation</p>
                             <div className="flex gap-3">
-                                <a
-                                    href="https://apps.apple.com/in/app/transporter-customer/id6755738681"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 bg-slate-900 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors text-center"
-                                >
-                                    App Store
-                                </a>
                                 <a
                                     href="https://play.google.com/store/apps/details?id=com.transporter.customer"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 bg-slate-900 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors text-center"
+                                    className="flex-1 bg-slate-900 text-white py-3 px-4 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors text-center"
                                 >
-                                    Google Play
+                                    Play Store
+                                </a>
+                                <a
+                                    href="https://apps.apple.com/in/app/transporter-customer/id6755738681"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 bg-slate-900 text-white py-3 px-4 rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors text-center"
+                                >
+                                    App Store
                                 </a>
                             </div>
                         </div>
 
                         {/* Driver App */}
-                        <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all group cursor-pointer border-2 border-purple-200">
-                            <div className="flex items-center justify-between mb-6">
-                                <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-sm border border-gray-200">
+                        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all group cursor-pointer border-2 border-purple-200">
+                            <div className="flex flex-col md:flex-row items-center md:justify-between mb-6 gap-4">
+                                <div className="w-24 h-24 md:w-32 md:h-32 bg-white rounded-2xl flex items-center justify-center overflow-hidden shadow-sm border border-gray-200 shrink-0">
                                     <img src={driverAppImg} alt="Transporter Driver App" className="w-full h-full object-contain" />
                                 </div>
-                                <div className="text-purple-600 group-hover:translate-x-2 transition-transform">
+                                <div className="hidden md:block text-purple-600 group-hover:translate-x-2 transition-transform">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                         <path d="M5 12h14M12 5l7 7-7 7" />
                                     </svg>
                                 </div>
                             </div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Transporter Driver</h3>
-                            <p className="text-gray-600 text-sm mb-6">Register as a driver, accept rides, and start earning with flexible hours</p>
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 text-center md:text-left">Transporter Driver</h3>
+                            <p className="text-gray-600 text-sm mb-6 text-center md:text-left">Register as a driver, accept rides, and start earning with flexible hours</p>
                             <div className="flex gap-3">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors text-center"
-                                >
-                                    App Store
-                                </a>
                                 <a
                                     href="https://play.google.com/store/apps/details?id=com.transporterpartner"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors text-center"
+                                    className="flex-1 bg-purple-600 text-white py-3 px-4 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors text-center"
                                 >
-                                    Google Play
+                                    Play Store
+                                </a>
+                                <a
+                                    href="#"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 bg-purple-600 text-white py-3 px-4 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors text-center"
+                                >
+                                    App Store
                                 </a>
                             </div>
                         </div>
