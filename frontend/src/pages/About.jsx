@@ -6,6 +6,7 @@ import customerAppImg from '../assets/playstorecustomer.png';
 import driverAppImg from '../assets/playstoredriver.png';
 import autoImg from '../assets/auto1.jpg';
 import carImg from '../assets/car1.jpg';
+import outstationImg from '../assets/outstation1.png';
 import truckImg from '../assets/truck2.png';
 const About = () => {
     return (
@@ -167,7 +168,7 @@ const About = () => {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-4 gap-8">
                         {/* Auto Service */}
                         <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all group overflow-hidden">
                             <div className="text-center space-y-6">
@@ -238,6 +239,42 @@ const About = () => {
                                 </div>
                                 <div className="pt-4">
                                     <div className="text-2xl font-bold text-purple-600">₹12/km</div>
+                                    <div className="text-sm text-gray-500">Starting fare</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Outstation Service */}
+                        <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all group relative overflow-hidden">
+                            <div className="text-center space-y-6">
+                                <div className="h-40 flex items-center justify-center relative mb-4">
+                                    <div className="absolute inset-0 bg-red-50 rounded-full blur-2xl opacity-60 scale-75 group-hover:scale-100 transition-all"></div>
+                                    <img src={outstationImg} alt="Outstation" className="w-full h-full object-contain relative z-10 group-hover:scale-110 transition-transform duration-500" />
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Outstation</h3>
+                                    <p className="text-gray-600 mb-4">Safe & comfortable intercity travel</p>
+                                </div>
+                                <div className="space-y-3 text-left">
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle className="text-purple-600" size={16} />
+                                        <span className="text-sm text-gray-600">Round trips & One-way</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle className="text-purple-600" size={16} />
+                                        <span className="text-sm text-gray-600">Wide range of fleets</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle className="text-purple-600" size={16} />
+                                        <span className="text-sm text-gray-600">Transparent pricing</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <CheckCircle className="text-purple-600" size={16} />
+                                        <span className="text-sm text-gray-600">Experienced drivers</span>
+                                    </div>
+                                </div>
+                                <div className="pt-4">
+                                    <div className="text-2xl font-bold text-purple-600">₹14/km</div>
                                     <div className="text-sm text-gray-500">Starting fare</div>
                                 </div>
                             </div>

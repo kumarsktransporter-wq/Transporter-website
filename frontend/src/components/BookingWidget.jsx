@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocationService } from '../hooks/useLocationService';
 import autoImg from '../assets/auto1.jpg';
 import carImg from '../assets/car1.jpg';
+import outstationImg from '../assets/outstation1.png';
 import truckImg from '../assets/truck2.png';
 
 const BookingWidget = () => {
@@ -99,7 +100,7 @@ const BookingWidget = () => {
                             { id: 'auto', label: 'Auto', img: autoImg, sub: '2-3 people' },
                             { id: 'car', label: 'Car', img: carImg, popular: true, sub: '2-4 passengers' },
                             { id: 'truck', label: 'Truck', img: truckImg, sub: '0-10 loads' },
-                            { id: 'outstation', label: 'Outstation', img: carImg, sub: 'Out of City' },
+                            { id: 'outstation', label: 'Outstation', img: outstationImg, sub: 'Out of City' },
                         ].map((type) => (
                             <button
                                 key={type.id}

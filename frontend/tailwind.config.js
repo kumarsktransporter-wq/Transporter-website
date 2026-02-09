@@ -17,7 +17,7 @@ export default {
                 accent: '#c084fc',
             },
             fontFamily: {
-                heading: ['Outfit', 'sans-serif'],
+                heading: ['Poppins', 'sans-serif'],
                 body: ['Inter', 'sans-serif'],
             },
             animation: {

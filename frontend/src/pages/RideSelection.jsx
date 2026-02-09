@@ -14,6 +14,7 @@ import { GoogleMap, DirectionsRenderer, MarkerF } from '@react-google-maps/api';
 
 import autoImg from '../assets/auto1.jpg';
 import carImg from '../assets/car1.jpg';
+import outstationImg from '../assets/outstation1.png';
 import truckImg from '../assets/truck2.png';
 import customerAppImg from '../assets/playstorecustomer.png';
 import driverAppImg from '../assets/playstoredriver.png';
@@ -552,7 +553,7 @@ const RideSelection = () => {
             category: 'outstation',
             name: 'Outstation Hatchback',
             icon: Car,
-            image: carImg,
+            image: outstationImg,
             price: fareDetails?.priceMini ? Math.round(fareDetails.priceMini * 1.8) : null,
             distance: fareDetails?.distanceKM,
             duration: fareDetails?.durationMins,
@@ -564,7 +565,7 @@ const RideSelection = () => {
             category: 'outstation',
             name: 'Outstation Sedan',
             icon: Car,
-            image: carImg,
+            image: outstationImg,
             price: fareDetails?.priceSedan ? Math.round(fareDetails.priceSedan * 1.8) : null,
             distance: fareDetails?.distanceKM,
             duration: fareDetails?.durationMins,
@@ -576,7 +577,7 @@ const RideSelection = () => {
             category: 'outstation',
             name: 'Outstation SUV / 7 Seater',
             icon: Car,
-            image: carImg,
+            image: outstationImg,
             price: fareDetails?.priceSUV ? Math.round(fareDetails.priceSUV * 1.5) : null,
             distance: fareDetails?.distanceKM,
             duration: fareDetails?.durationMins,
@@ -588,7 +589,7 @@ const RideSelection = () => {
             category: 'outstation',
             name: 'Premium Luxury',
             icon: Car,
-            image: carImg,
+            image: outstationImg,
             price: fareDetails?.priceSUV ? Math.round(fareDetails.priceSUV * 2.5) : null,
             distance: fareDetails?.distanceKM,
             duration: fareDetails?.durationMins,
@@ -600,7 +601,7 @@ const RideSelection = () => {
             category: 'outstation',
             name: 'Mini Bus',
             icon: Bus,
-            image: truckImg, // Using larger vehicle image
+            image: outstationImg, // Using larger vehicle image
             price: fareDetails?.priceSUV ? Math.round(fareDetails.priceSUV * 3.0) : null,
             distance: fareDetails?.distanceKM,
             duration: fareDetails?.durationMins,
@@ -688,7 +689,7 @@ const RideSelection = () => {
                                 { id: 'auto', label: 'Auto', img: autoImg },
                                 { id: 'car', label: 'Car', img: carImg },
                                 { id: 'truck', label: 'Truck', img: truckImg },
-                                { id: 'outstation', label: 'Outstation', img: carImg },
+                                { id: 'outstation', label: 'Outstation', img: outstationImg },
                             ].map((type) => (
                                 <button
                                     key={type.id}
@@ -840,7 +841,7 @@ const RideSelection = () => {
                                         { id: 'car', label: 'Car', img: carImg },
                                         { id: 'auto', label: 'Auto', img: autoImg },
                                         { id: 'truck', label: 'Truck', img: truckImg },
-                                        { id: 'outstation', label: 'Outstation', img: carImg },
+                                        { id: 'outstation', label: 'Outstation', img: outstationImg },
                                     ].map((type) => (
                                         <button
                                             key={type.id}

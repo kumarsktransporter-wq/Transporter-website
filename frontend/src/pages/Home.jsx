@@ -7,6 +7,7 @@ import { Shield, Smartphone, Map, CreditCard, Star, Clock, CheckCircle, Car, Tru
 import { motion } from 'framer-motion';
 import autoImg from '../assets/auto1.jpg';
 import carImg from '../assets/car1.jpg';
+import outstationImg from '../assets/outstation1.png';
 import truckImg from '../assets/truck2.png';
 import customerAppImg from '../assets/playstorecustomer.png';
 import driverAppImg from '../assets/playstoredriver.png';
@@ -58,7 +59,7 @@ const Home = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                         {/* Auto */}
                         <div className="bg-slate-50 rounded-[32px] p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 overflow-hidden relative flex flex-col h-full">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 to-indigo-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
@@ -95,6 +96,24 @@ const Home = () => {
                             </button>
                         </div>
 
+                        {/* Outstation */}
+                        <div className="bg-slate-50 rounded-[32px] p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 overflow-hidden relative flex flex-col h-full">
+                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 to-amber-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0">
+                                <div className="absolute inset-0 bg-orange-100/50 rounded-full scale-75 group-hover:scale-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+                                <img src={outstationImg} alt="Outstation" className="w-56 object-contain relative z-10 drop-shadow-xl group-hover:scale-110 group-hover:rotate-1 transition-all duration-500" />
+                            </div>
+                            <h3 className="text-2xl font-heading font-bold text-slate-900 mb-1">Outstation(Mini Bus)</h3>
+                            <p className="text-purple-600 font-medium text-sm mb-3">Round trips & One-way drops</p>
+                            <p className="text-slate-500 mb-6 flex-grow">Travel out of town with comfort. Choose from our wide range of cars for your weekend getaways.</p>
+                            <button
+                                onClick={() => navigate('/ride', { state: { serviceType: 'outstation' } })}
+                                className="w-full py-3 rounded-xl border-2 border-slate-900 text-slate-900 font-bold hover:bg-slate-900 hover:text-white transition-colors"
+                            >
+                                Book Now
+                            </button>
+                        </div>
+
                         {/* Truck */}
                         <div className="bg-slate-50 rounded-[32px] p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 overflow-hidden relative flex flex-col h-full">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-cyan-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
@@ -105,7 +124,7 @@ const Home = () => {
                             <h3 className="text-2xl font-heading font-bold text-slate-900 mb-1">Goods & Logistics (Trucks)</h3>
                             <p className="text-purple-600 font-medium text-sm mb-3">Reliable goods transport & logistics.</p>
                             <p className="text-slate-500 mb-6 flex-grow">Need to move house or send a business delivery? We have 3-Wheeler Tempos for boxes and Tata Ace trucks for furniture.</p>
-                            <button
+                            <button             
                                 onClick={() => navigate('/ride', { state: { serviceType: 'truck' } })}
                                 className="w-full py-3 rounded-xl border-2 border-slate-900 text-slate-900 font-bold hover:bg-slate-900 hover:text-white transition-colors"
                             >
@@ -226,7 +245,7 @@ const Home = () => {
                                     </svg>
                                 </div>
                             </div>
-                            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 text-center md:text-left">Transporter Driver</h3>
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 text-center md:text-left">Transporter Partner</h3>
                             <p className="text-gray-600 text-sm mb-6 text-center md:text-left">Register as a driver, accept rides, and start earning with flexible hours</p>
                             <div className="flex gap-3">
                                 <a

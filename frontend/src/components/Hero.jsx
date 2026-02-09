@@ -14,48 +14,48 @@ const Hero = () => {
                 <img
                     src={HeroBg}
                     alt="Background"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-[58%_10%] scale-[1.5]"
                 />
             </div>
 
             {/* --- MOBILE HEADER (Title) with Background --- */}
-            <div className="md:hidden pt-28 pb-32 w-full text-center z-20 px-2 relative">
+            <div className="md:hidden w-full relative h-[60vh] min-h-[300px] flex items-center z-20 overflow-hidden">
                 {/* Background Image for Mobile Header Only */}
                 <div className="absolute inset-0 z-0">
                     <img
                         src={HeroBg}
                         alt="Background"
-                        className="w-full h-full object-cover object-[50%_20%]"
+                        className="w-full h-full object-cover object-[68%_20%] scale-[1]"
                     />
+                    <div className="absolute inset-0 bg-black/10"></div>
                 </div>
-                <div className="relative z-10">
-                    <h1 className="text-lg font-black font-heading text-orange-500 leading-tight mb-0 drop-shadow-lg text-left">
-                        Stop Paying Surge.<br />Start Moving Fair.
+
+                <div className="relative z-10 w-full px-6 flex flex-col justify-start pt-24 h-full">
+                    <h1 className="text-3xl font-extrabold font-heading text-white leading-tight mb-4 drop-shadow-xl text-right">
+                        Stop Paying Surge.<br />
+                        <span className="text-white-400">Start Moving Fair.</span>
                     </h1>
                 </div>
-            </div>
 
-            {/* --- MOBILE SUBTEXT (Moved Down) --- */}
-            <div className="md:hidden w-full px-6 pt-0 pb-4 text-center z-10 relative">
-                <p className="text-black text-sm font-medium leading-relaxed drop-shadow-sm">
-                    Book Autos, Cabs, and Trucks at flat rates all day, every day.
-                </p>
+                <div className="absolute bottom-12 left-0 w-full px-4 py-4 text-center z-10">
+                    <p className="text-black text-base font-bold leading-relaxed">
+                        Book Autos, Cabs, and Trucks at flat rates all day, every day.
+                    </p>
+                </div>
             </div>
 
             {/* --- DESKTOP TITLE (Updated) --- */}
-            <div className="hidden md:block absolute top-[15%] right-8 lg:right-16 z-10 text-right max-w-2xl">
-                <h1 className="text-lg lg:text-xl font- font-heading text-white leading-tight layer-shadow drop-shadow-lg mb-6">
-                    Stop Paying Surge.<br />Start Moving Fair.
+            <div className="hidden md:block absolute top-[15%] right-8 lg:right-80 z-10 text-right max-w-4xl">
+                <h1 className="text-3xl lg:text-5xl xl:text-6xl font-extrabold font-heading text-white leading-tight drop-shadow-2xl mb-8 tracking-tight">
+                    Stop Paying Surge.<br />
                 </h1>
-                <div className="flex flex-col items-end gap-2 mr-1">
-                    <p className="text-lg lg:text-xl font-medium text-white shadow-black/20 drop-shadow-md font-heading leading-relaxed">
-                        Book Autos, Cabs, and Trucks at flat rates all day, every day.
-                    </p>
-                    <p className="text-lg lg:text-xl font-medium text-white shadow-black/20 drop-shadow-md font-heading leading-relaxed">
-                        Whether you need to reach the office or shift your home,<br />
-                        <span className="text-yellow-400 font-bold">Transporter</span> is India's most honest movement app.
-                    </p>
-                </div>
+            </div>
+
+            <div className="hidden md:block absolute top-[15%] right-8 lg:right-52 z-10 text-right max-w-4xl">
+                <h1 className="text-3xl lg:text-5xl xl:text-6xl font-extrabold font-heading text-white leading-tight drop-shadow-2xl mb-8 tracking-tight">
+                    <br />
+                    <span className="text-white-400">Start Moving Fair.</span>
+                </h1>
             </div>
 
             {/* --- CONTENT CONTAINER --- */}
