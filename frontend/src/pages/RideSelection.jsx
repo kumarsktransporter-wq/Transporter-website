@@ -627,102 +627,95 @@ const RideSelection = () => {
                 }
             `}</style>
 
-            {/* Mobile Layout: Full Page Fixed Container (No Map) */}
-            <div className="lg:hidden fixed top-24 left-0 right-0 bottom-0 z-0 bg-white flex flex-col isolate overflow-hidden">
+            <div className="lg:hidden min-h-screen bg-gray-50/50 pt-24 pb-32 w-full relative z-0">
 
-                {/* Main Content Wrapper */}
-                <div className="flex-1 flex flex-col overflow-hidden relative mt-4">
+                {/* Scrollable Content */}
+                <div className="px-4">
 
-                    {/* Scrollable Container */}
-                    <div className="flex-1 overflow-y-auto overscroll-y-contain px-5 pb-32 scroll-smooth pt-4">
+                    {/* Location Inputs Card */}
+                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-6 relative overflow-hidden">
+                        <div className="space-y-4 relative">
+                            {/* Connecting Line */}
+                            <div className="absolute left-[15px] top-8 bottom-8 w-0.5 bg-gray-100 border-l border-dashed border-gray-300"></div>
 
-                        {/* Inputs Section - card style like summary */}
-                        <div className="py-2 mb-4">
-                            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm px-3 py-2">
-                                <div className="space-y-3 relative">
-                                    <div className="absolute left-[19px] top-6 bottom-6 w-0.5 bg-gray-100"></div>
-
-                                    {/* Pickup */}
-                                    <div className="relative group z-30">
-                                        <div className="absolute left-3 top-2.5 text-green-500">
-                                            <div className="w-3 h-3 rounded-full bg-green-500 border-[3px] border-white shadow-sm ring-1 ring-gray-100"></div>
-                                        </div>
-                                        <input
-                                            ref={pickupInputRef}
-                                            type="text"
-                                            placeholder="Current Location"
-                                            value={pickup}
-                                            onChange={(e) => setPickup(e.target.value)}
-                                            className="w-full bg-transparent border-0 outline-none focus:outline-none focus:ring-2 focus:ring-purple-600 rounded-xl py-1.5 pl-8 pr-10 text-gray-900 font-medium placeholder-gray-400 text-sm"
-                                        />
-                                        {/* Locate Button inside input */}
-                                        <button
-                                            onClick={detectLocation}
-                                            className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 text-gray-400 hover:text-purple-600 active:scale-90 transition-all rounded-full hover:bg-gray-100"
-                                            title="Use current location"
-                                        >
-                                            <Navigation size={16} fill={isLocating ? "#7C3AED" : "none"} className={isLocating ? "text-purple-600 animate-spin" : ""} />
-                                        </button>
-                                    </div>
-
-                                    {/* Divider line */}
-                                    <div className="h-px bg-gray-100 mx-2"></div>
-
-                                    {/* Drop */}
-                                    <div className="relative group z-20">
-                                        <div className="absolute left-3 top-2.5 text-red-500">
-                                            <div className="w-3 h-3 bg-red-500 rotate-45 border-[2px] border-white shadow-sm ring-1 ring-gray-100"></div>
-                                        </div>
-                                        <input
-                                            ref={dropInputRef}
-                                            type="text"
-                                            placeholder="Enter Destination"
-                                            value={drop}
-                                            onChange={(e) => setDrop(e.target.value)}
-                                            className="w-full bg-transparent border-0 outline-none focus:outline-none focus:ring-2 focus:ring-purple-600 rounded-xl py-1.5 pl-8 pr-4 text-gray-900 font-medium placeholder-gray-400 text-sm"
-                                        />
+                            {/* Pickup */}
+                            <div className="relative z-10">
+                                <div className="absolute left-0 top-3 text-green-500">
+                                    <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center border border-green-100">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-green-500 shadow-sm ring-2 ring-white"></div>
                                     </div>
                                 </div>
+                                <input
+                                    ref={pickupInputRef}
+                                    type="text"
+                                    placeholder="Pickup Location"
+                                    value={pickup}
+                                    onChange={(e) => setPickup(e.target.value)}
+                                    className="w-full bg-gray-50 border border-gray-100 hover:border-gray-200 focus:bg-white focus:border-purple-500 rounded-xl py-3.5 pl-12 pr-10 text-gray-900 font-semibold placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-purple-500/10 transition-all text-sm"
+                                />
+                                <button
+                                    onClick={detectLocation}
+                                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-purple-600 active:scale-95 transition-all rounded-full hover:bg-gray-100"
+                                >
+                                    <Navigation size={18} fill={isLocating ? "#7C3AED" : "none"} className={isLocating ? "text-purple-600 animate-spin" : ""} />
+                                </button>
+                            </div>
+
+                            {/* Drop */}
+                            <div className="relative z-10">
+                                <div className="absolute left-0 top-3 text-red-500">
+                                    <div className="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center border border-red-100">
+                                        <div className="w-2.5 h-2.5 bg-red-500 rotate-45 shadow-sm ring-2 ring-white"></div>
+                                    </div>
+                                </div>
+                                <input
+                                    ref={dropInputRef}
+                                    type="text"
+                                    placeholder="Where to?"
+                                    value={drop}
+                                    onChange={(e) => setDrop(e.target.value)}
+                                    className="w-full bg-gray-50 border border-gray-100 hover:border-gray-200 focus:bg-white focus:border-purple-500 rounded-xl py-3.5 pl-12 pr-4 text-gray-900 font-semibold placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-purple-500/10 transition-all text-sm"
+                                />
                             </div>
                         </div>
+                    </div>
 
-                        {/* Promo Removed */}
-
-                        {/* Service Selection (Mobile) */}
-                        <div className="mb-4 px-1">
-                            <h3 className="text-gray-900 font-bold text-base mb-3">Select Vehicle Type</h3>
-                            <div className="flex gap-3 overflow-x-auto pb-2 -mx-5 px-5 no-scrollbar snap-x">
-                                {[
-                                    { id: 'car', label: 'Car', img: carImg },
-                                    { id: 'auto', label: 'Auto', img: autoImg },
-                                    { id: 'truck', label: 'Truck', img: truckImg },
-                                    { id: 'outstation', label: 'Outstation', img: carImg },
-                                ].map((type) => (
-                                    <button
-                                        key={type.id}
-                                        onClick={() => { setServiceType(type.id); setSelectedRide(null); }}
-                                        className={`flex-none w-[23%] min-w-[85px] snap-center flex flex-col items-center justify-center gap-1.5 p-2 rounded-2xl border-2 transition-all duration-300
-                                            ${serviceType === type.id
-                                                ? 'bg-purple-50 border-purple-600 shadow-md scale-105 z-10'
-                                                : 'bg-white border-gray-100 shadow-sm text-gray-400 hover:border-gray-200'}`}
-                                    >
-                                        <div className="w-full h-10 flex items-center justify-center">
-                                            <img src={type.img} alt={type.label} className="w-full h-full object-contain drop-shadow-sm" />
-                                        </div>
-                                        <span className={`text-[11px] font-bold tracking-wide ${serviceType === type.id ? 'text-purple-700' : 'text-gray-500'}`}>
-                                            {type.label}
-                                        </span>
-                                    </button>
-                                ))}
-                            </div>
+                    {/* Vehicle Type Selection */}
+                    <div className="mb-6">
+                        <h3 className="text-gray-900 font-bold text-lg mb-3 tracking-tight">Vehicle Type</h3>
+                        <div className="flex gap-3 overflow-x-auto pb-4 -mx-4 px-4 no-scrollbar snap-x">
+                            {[
+                                { id: 'auto', label: 'Auto', img: autoImg },
+                                { id: 'car', label: 'Car', img: carImg },
+                                { id: 'truck', label: 'Truck', img: truckImg },
+                                { id: 'outstation', label: 'Outstation', img: carImg },
+                            ].map((type) => (
+                                <button
+                                    key={type.id}
+                                    onClick={() => { setServiceType(type.id); setSelectedRide(null); }}
+                                    className={`flex-none w-[28%] min-w-[100px] snap-center flex flex-col items-center justify-center gap-2 p-3 rounded-2xl border-2 transition-all duration-300
+                                        ${serviceType === type.id
+                                            ? 'bg-purple-50 border-purple-600 shadow-lg transform scale-105 z-10'
+                                            : 'bg-white border-gray-100 shadow-sm text-gray-400 hover:border-gray-200'}`}
+                                >
+                                    <div className="w-full h-12 flex items-center justify-center">
+                                        <img src={type.img} alt={type.label} className="w-full h-full object-contain drop-shadow-sm" />
+                                    </div>
+                                    <span className={`text-xs font-bold tracking-wide ${serviceType === type.id ? 'text-purple-700' : 'text-gray-500'}`}>
+                                        {type.label}
+                                    </span>
+                                </button>
+                            ))}
                         </div>
+                    </div>
 
-                        <h3 className="font-bold text-gray-900 text-lg mb-3 px-1">
+                    {/* Ride Options List */}
+                    <div className="mb-8">
+                        <h3 className="text-gray-900 font-bold text-lg mb-3 tracking-tight">
                             {serviceType === 'passenger' ? 'Available Rides' : 'Transport Options'}
                         </h3>
 
-                        {/* Ride Options List */}
-                        <div className="space-y-2 px-1">
+                        <div className="space-y-3 pb-8">
                             <AnimatePresence mode='popLayout'>
                                 {filteredVehicles.map((ride) => (
                                     <RideCard
@@ -734,39 +727,48 @@ const RideSelection = () => {
                                 ))}
                             </AnimatePresence>
 
-
                             {loading && (
                                 <div className="space-y-3">
                                     {[1, 2].map(i => (
-                                        <div key={i} className="h-24 bg-gray-50 rounded-xl animate-pulse"></div>
+                                        <div key={i} className="h-24 bg-gray-100 rounded-xl animate-pulse"></div>
                                     ))}
+                                </div>
+                            )}
+
+                            {filteredVehicles.length === 0 && !loading && (
+                                <div className="text-center py-10 text-gray-400">
+                                    <p>No rides available for this category.</p>
                                 </div>
                             )}
                         </div>
                     </div>
 
-                    {/* Fixed Bottom Button (Inside Sheet - Flex Child) */}
-                    <div className="shrink-0 p-4 bg-white border-t border-gray-100 z-30 safe-area-bottom shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
-                        <div className="flex items-center mb-3">
-                            <button className="flex items-center gap-2 px-3 py-1.5 bg-white hover:bg-gray-50 rounded-md text-xs font-semibold text-gray-800 border border-gray-300 transition-colors">
-                                <span className="w-2 h-2 rounded-full bg-green-500"></span>
-                                Cash
-                            </button>
-                        </div>
-                        <button
-                            disabled={!selectedRide}
-                            onClick={handleContinue}
-                            className={`w-full py-3 rounded-xl text-base font-bold shadow-md transition-all flex items-center justify-center gap-2
-                                ${selectedRide
-                                    ? 'bg-purple-600 text-white hover:bg-purple-700 active:scale-[0.98]'
-                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                                }`}
-                        >
-                            {selectedRide ? `Book ${vehicles.find(v => v.id === selectedRide)?.name}` : 'Select Ride'}
-                            {selectedRide && <ArrowRight size={20} />}
+                </div>
+
+                {/* Fixed Bottom Action Bar */}
+                <div className="fixed bottom-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-t border-gray-100 p-4 pb-6 shadow-[0_-5px_40px_rgba(0,0,0,0.1)] safe-area-bottom">
+                    <div className="flex items-center justify-between mb-3 px-1">
+                        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Payment</div>
+                        <button className="flex items-center gap-2 px-3 py-1 bg-green-50 hover:bg-green-100 rounded-full text-xs font-bold text-green-700 border border-green-200 transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                            Cash Payment
                         </button>
                     </div>
+
+                    <button
+                        disabled={!selectedRide}
+                        onClick={handleContinue}
+                        className={`w-full py-4 rounded-2xl text-lg font-black shadow-xl transition-all duration-300 flex items-center justify-center gap-3 active:scale-[0.98]
+                            ${selectedRide
+                                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-purple-500/30'
+                                : 'bg-gray-100 text-gray-400 border border-gray-200 cursor-not-allowed'
+                            }`}
+                    >
+                        {selectedRide ? `Book ${vehicles.find(v => v.id === selectedRide)?.name}` : 'Select a Ride'}
+                        {selectedRide && <ArrowRight size={22} className="text-purple-200" />}
+                    </button>
                 </div>
+
             </div>
 
             {/* Desktop Layout */}

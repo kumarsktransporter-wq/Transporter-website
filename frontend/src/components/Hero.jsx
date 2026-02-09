@@ -19,28 +19,32 @@ const Hero = () => {
             </div>
 
             {/* --- MOBILE HEADER (Title) with Background --- */}
-            <div className="md:hidden pt-28 pb-4 w-full text-center z-20 px-4 relative">
+            <div className="md:hidden pt-28 pb-32 w-full text-center z-20 px-2 relative">
                 {/* Background Image for Mobile Header Only */}
                 <div className="absolute inset-0 z-0">
                     <img
                         src={HeroBg}
                         alt="Background"
-                        className="w-full h-full object-cover object-center"
+                        className="w-full h-full object-cover object-[50%_20%]"
                     />
                 </div>
                 <div className="relative z-10">
-                    <h1 className="text-3xl font-black font-heading text-white leading-tight mb-2 drop-shadow-lg">
+                    <h1 className="text-lg font-black font-heading text-orange-500 leading-tight mb-0 drop-shadow-lg text-left">
                         Stop Paying Surge.<br />Start Moving Fair.
                     </h1>
-                    <p className="text-white text-sm font-medium leading-relaxed px-2 mt-2 drop-shadow-md">
-                        Book Autos, Cabs, and Trucks at flat rates all day, every day. Whether you need to reach the office or shift your home, Transporter is India's most honest movement app.
-                    </p>
                 </div>
+            </div>
+
+            {/* --- MOBILE SUBTEXT (Moved Down) --- */}
+            <div className="md:hidden w-full px-6 pt-0 pb-4 text-center z-10 relative">
+                <p className="text-black text-sm font-medium leading-relaxed drop-shadow-sm">
+                    Book Autos, Cabs, and Trucks at flat rates all day, every day.
+                </p>
             </div>
 
             {/* --- DESKTOP TITLE (Updated) --- */}
             <div className="hidden md:block absolute top-[15%] right-8 lg:right-16 z-10 text-right max-w-2xl">
-                <h1 className="text-5xl lg:text-6xl font-black font-heading text-white leading-tight layer-shadow drop-shadow-lg mb-6">
+                <h1 className="text-lg lg:text-xl font- font-heading text-white leading-tight layer-shadow drop-shadow-lg mb-6">
                     Stop Paying Surge.<br />Start Moving Fair.
                 </h1>
                 <div className="flex flex-col items-end gap-2 mr-1">
@@ -63,16 +67,7 @@ const Hero = () => {
                 </div>
 
                 {/* --- MOBILE FOOTER IMAGE (Down & After Form) --- */}
-                <div className="md:hidden w-full mt-auto pt-8 -mb-1">
-                    <div className="relative w-full h-64">
-                        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent z-10 h-12"></div>
-                        <img
-                            src={HeroBg}
-                            alt="Background"
-                            className="w-full h-full object-cover object-center"
-                        />
-                    </div>
-                </div>
+
 
             </div>
         </div>
