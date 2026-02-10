@@ -29,9 +29,13 @@ app.use('/api/auth', authRoutes);
 app.use('/api/location', locationRoutes);
 app.use('/api/ride', rideRoutes);
 
-// Root Route
-app.get('/', (req, res) => {
-    res.send('Transporter Backend API is Running');
+// Serve static files from the React frontend app
+const frontendPath = require('path').join(__dirname, '../frontend/dist');
+app.use(express.static(frontendPath));
+
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+    res.sendFile(require('path').join(frontendPath, 'index.html'));
 });
 
 // Protected Route Example
