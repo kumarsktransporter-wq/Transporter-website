@@ -1,6 +1,6 @@
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
-const admin = require("../config/firebaseAdmin.js");
+const admin = require("../config/firebaseAdmin");
 
 
 // In-memory OTP Store (Production: Use Redis)
