@@ -19,23 +19,24 @@ import appBgImg from '../assets/main2.jpg';
 
 const FeatureCard = ({ image, title, desc, delay }) => (
     <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay, duration: 0.5 }}
-        className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer overflow-hidden h-full flex flex-col"
+        transition={{ delay, duration: 0.6, type: "spring", stiffness: 50 }}
+        className="bg-white rounded-[2rem] p-6 shadow-xl shadow-slate-200/40 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2 transition-all duration-300 group cursor-pointer border border-white/50 flex flex-col items-center text-center w-full max-w-[350px] relative overflow-hidden"
     >
-        <div className="h-48 w-full relative overflow-hidden">
-            <div className="absolute inset-0 bg-purple-900/10 group-hover:bg-transparent transition-colors z-10"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div className="h-48 w-full mb-6 overflow-hidden rounded-2xl relative shadow-inner">
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-all duration-300 z-10"></div>
             <img
                 src={image}
                 alt={title}
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
             />
         </div>
-        <div className="p-8 flex-1 flex flex-col">
-            <h3 className="text-2xl font-heading font-bold mb-3 text-slate-900 group-hover:text-purple-600 transition-colors">{title}</h3>
-            <p className="text-slate-500 text-base leading-relaxed">{desc}</p>
+        <div className="flex-1 flex flex-col items-center">
+            <h3 className="text-xl font-heading font-bold mb-3 text-slate-800 group-hover:text-purple-600 transition-colors">{title}</h3>
+            <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
         </div>
     </motion.div>
 );
@@ -48,7 +49,7 @@ const Home = () => {
             <Hero />
 
             {/* Our Services Section */}
-            <section className="py-24 w-full bg-white">
+            <section className="py-24 w-full bg-slate-50">
                 <div className="w-full px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16 space-y-4">
                         <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900">
@@ -61,11 +62,10 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
                         {/* Auto */}
-                        <div className="bg-slate-50 rounded-[32px] p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 overflow-hidden relative flex flex-col h-full">
-                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 to-indigo-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0">
-                                <div className="absolute inset-0 bg-purple-100/50 rounded-full scale-75 group-hover:scale-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-                                <img src={autoImg} alt="Auto" className="w-48 object-contain relative z-10 drop-shadow-xl group-hover:scale-110 group-hover:rotate-1 transition-all duration-500" />
+                        <div className="bg-white rounded-[32px] p-8 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 flex flex-col h-full relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0 overflow-hidden">
+                                <img src={autoImg} alt="Auto" className="w-48 object-contain relative z-10 group-hover:scale-110 transition-all duration-500" />
                             </div>
                             <h3 className="text-2xl font-heading font-bold text-slate-900 mb-1">Auto</h3>
                             <p className="text-purple-600 font-medium text-sm mb-3">Quick and affordable rides to your doorstep.</p>
@@ -79,11 +79,10 @@ const Home = () => {
                         </div>
 
                         {/* Cab */}
-                        <div className="bg-slate-50 rounded-[32px] p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 overflow-hidden relative flex flex-col h-full">
-                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 to-indigo-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0">
-                                <div className="absolute inset-0 bg-purple-100/50 rounded-full scale-75 group-hover:scale-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-                                <img src={carImg} alt="Cab" className="w-64 object-contain relative z-10 drop-shadow-xl group-hover:scale-110 group-hover:-rotate-1 transition-all duration-500" />
+                        <div className="bg-white rounded-[32px] p-8 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 flex flex-col h-full relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-indigo-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0 overflow-hidden">
+                                <img src={carImg} alt="Cab" className="w-64 object-contain relative z-10 group-hover:scale-110 transition-all duration-500" />
                             </div>
                             <h3 className="text-2xl font-heading font-bold text-slate-900 mb-1">Cab (Mini / Sedan / SUV)</h3>
                             <p className="text-purple-600 font-medium text-sm mb-3">Comfortable AC rides for city travel.</p>
@@ -97,11 +96,10 @@ const Home = () => {
                         </div>
 
                         {/* Outstation */}
-                        <div className="bg-slate-50 rounded-[32px] p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 overflow-hidden relative flex flex-col h-full">
-                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-orange-500 to-amber-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0">
-                                <div className="absolute inset-0 bg-orange-100/50 rounded-full scale-75 group-hover:scale-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-                                <img src={outstationImg} alt="Outstation" className="w-56 object-contain relative z-10 drop-shadow-xl group-hover:scale-110 group-hover:rotate-1 transition-all duration-500" />
+                        <div className="bg-white rounded-[32px] p-8 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 flex flex-col h-full relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-amber-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0 overflow-hidden">
+                                <img src={outstationImg} alt="Outstation" className="w-56 object-contain relative z-10 group-hover:scale-110 transition-all duration-500" />
                             </div>
                             <h3 className="text-2xl font-heading font-bold text-slate-900 mb-1">Outstation(Mini Bus)</h3>
                             <p className="text-purple-600 font-medium text-sm mb-3">Round trips & One-way drops</p>
@@ -115,16 +113,15 @@ const Home = () => {
                         </div>
 
                         {/* Truck */}
-                        <div className="bg-slate-50 rounded-[32px] p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 overflow-hidden relative flex flex-col h-full">
-                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-cyan-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0">
-                                <div className="absolute inset-0 bg-blue-100/50 rounded-full scale-75 group-hover:scale-100 transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-                                <img src={truckImg} alt="Truck" className="w-56 object-contain relative z-10 drop-shadow-xl group-hover:scale-110 group-hover:rotate-1 transition-all duration-500" />
+                        <div className="bg-white rounded-[32px] p-8 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group text-center border border-slate-100 flex flex-col h-full relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                            <div className="h-48 w-full flex items-center justify-center mb-6 relative shrink-0 overflow-hidden">
+                                <img src={truckImg} alt="Truck" className="w-56 object-contain relative z-10 group-hover:scale-110 transition-all duration-500" />
                             </div>
                             <h3 className="text-2xl font-heading font-bold text-slate-900 mb-1">Goods & Logistics (Trucks)</h3>
                             <p className="text-purple-600 font-medium text-sm mb-3">Reliable goods transport & logistics.</p>
                             <p className="text-slate-500 mb-6 flex-grow">Need to move house or send a business delivery? We have 3-Wheeler Tempos for boxes and Tata Ace trucks for furniture.</p>
-                            <button             
+                            <button
                                 onClick={() => navigate('/ride', { state: { serviceType: 'truck' } })}
                                 className="w-full py-3 rounded-xl border-2 border-slate-900 text-slate-900 font-bold hover:bg-slate-900 hover:text-white transition-colors"
                             >
@@ -136,18 +133,25 @@ const Home = () => {
             </section>
 
             {/* Services/Features Section - LIGHT GRAY BG */}
-            <section className="py-24 relative bg-slate-50 w-full">
-                <div className="w-full px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900">
-                            Why Choose <span className="text-purple-600">Transporter?</span>
+            <section className="py-24 relative bg-slate-50 w-full overflow-hidden">
+                {/* Decorative Elements */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                    <div className="absolute -top-24 -right-24 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl"></div>
+                    <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
+                </div>
+
+                <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="text-center mb-20 space-y-4">
+                        <span className="text-purple-600 font-semibold tracking-wider uppercase text-sm">Experience the Difference</span>
+                        <h2 className="text-4xl md:text-5xl font-heading font-bold text-slate-900">
+                            Why Choose <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Transporter?</span>
                         </h2>
-                        <p className="text-slate-500 max-w-2xl mx-auto text-lg">
-                            We're not just moving people; we're moving the world forward.
+                        <p className="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed">
+                            We're redefining mobility with safety, transparency, and innovation at the core.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto justify-items-center">
+                    <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
                         <FeatureCard
                             image={noSurgeImg}
                             title="No Surge Pricing, Ever"
