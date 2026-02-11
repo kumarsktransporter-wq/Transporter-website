@@ -13,8 +13,11 @@ const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString()
 
 exports.sendOtp = async (req, res) => {
     try {
-        const { mobile } = req.body;
-        if (!mobile) return res.status(400).json({ error: 'Mobile number required' });
+        const { mobile } = req.body; // Keeping 'mobile' to match frontend, user prompt said 'phone' but structure is key.
+
+        if (!mobile) {
+            return res.status(400).json({ error: 'Mobile number required' });
+        }
 
         const now = Date.now();
         const record = otpStore.get(mobile);
@@ -24,60 +27,48 @@ exports.sendOtp = async (req, res) => {
             return res.status(429).json({ error: 'Please wait 1 minute before resending OTP.' });
         }
 
-        // Daily Limit Logic (Simplified for memory store)
-        // In a real app, this should be in a DB to persist across restarts.
-        // For now, we reset attempts if the record is expired and cleaned up, 
-        // or we can keep a separate "attempts" map if needed. 
-        // We'll trust the expiry cleanup for now to clear "session" attempts.
-
-        const otp = generateOTP();
+        // generate OTP
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
         const expiresAt = now + 5 * 60 * 1000; // 5 minutes from now
 
         const apiKey = process.env.FAST2SMS_API_KEY;
-        let sent = false;
 
         if (apiKey) {
-            // Fast2SMS: Quick SMS API (Route "q")
             const cleanNumber = mobile.replace('+91', '').trim();
-
-            try {
-                await axios.post("https://www.fast2sms.com/dev/bulkV2", {
-                    route: "q",
-                    message: `Your Transporter login OTP is ${otp}. Valid for 5 minutes.`,
-                    numbers: cleanNumber
-                }, {
-                    headers: {
-                        "authorization": apiKey,
-                        "Content-Type": "application/json"
-                    }
-                });
-                sent = true;
-            } catch (smsError) {
-                const providerError = smsError.response?.data?.message || smsError.message;
-                console.error("Fast2SMS Failed:", smsError.response ? smsError.response.data : smsError.message);
-
-                return res.status(500).json({
-                    error: `SMS Provider Error: ${providerError}`
-                });
-            }
+            // send via Fast2SMS
+            await axios.post("https://www.fast2sms.com/dev/bulkV2", {
+                route: "otp",
+                variables_values: otp,
+                numbers: cleanNumber
+            }, {
+                headers: {
+                    authorization: apiKey
+                }
+            });
         } else {
             // Development Mock
             console.log(`[DEV MODE] Mock OTP for ${mobile}: ${otp}`);
         }
 
-        if (sent) {
-            otpStore.set(mobile, {
-                otp,
-                expiresAt,
-                lastSent: now,
-                attempts: (record?.attempts || 0) + 1
-            });
-            return res.json({ success: true, message: 'OTP sent successfully' });
-        }
+        // Store OTP
+        otpStore.set(mobile, {
+            otp,
+            expiresAt,
+            lastSent: now,
+            attempts: (record?.attempts || 0) + 1
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "OTP sent successfully"
+        });
 
     } catch (error) {
         console.error('Send OTP Error:', error);
-        res.status(500).json({ error: error.message });
+        return res.status(500).json({
+            success: false,
+            message: error.message
+        });
     }
 };
 
