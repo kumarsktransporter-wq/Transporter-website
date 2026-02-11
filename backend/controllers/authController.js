@@ -13,49 +13,48 @@ const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString()
 
 exports.sendOtp = async (req, res) => {
     try {
-        const { mobile } = req.body; // Keeping 'mobile' to match frontend, user prompt said 'phone' but structure is key.
+        const { mobile } = req.body; // Frontend sends 'mobile'
+        const phone = mobile;
 
-        if (!mobile) {
-            return res.status(400).json({ error: 'Mobile number required' });
+        if (!phone) {
+            return res.status(400).json({ message: "Phone number required" });
         }
 
-        const now = Date.now();
-        const record = otpStore.get(mobile);
+        const otp = Math.floor(100000 + Math.random() * 900000);
 
-        // Rate Limit: 1 OTP per 60 seconds
-        if (record && now - record.lastSent < 60000) {
-            return res.status(429).json({ error: 'Please wait 1 minute before resending OTP.' });
-        }
-
-        // generate OTP
-        const otp = Math.floor(100000 + Math.random() * 900000).toString();
-        const expiresAt = now + 5 * 60 * 1000; // 5 minutes from now
-
-        const apiKey = process.env.FAST2SMS_API_KEY;
-
-        if (apiKey) {
-            const cleanNumber = mobile.replace('+91', '').trim();
-            // send via Fast2SMS
-            await axios.post("https://www.fast2sms.com/dev/bulkV2", {
+        const response = await axios({
+            method: "POST",
+            url: "https://www.fast2sms.com/dev/bulkV2",
+            headers: {
+                authorization: process.env.FAST2SMS_API_KEY,
+                "Content-Type": "application/json"
+            },
+            data: {
                 route: "otp",
                 variables_values: otp,
-                numbers: cleanNumber
-            }, {
-                headers: {
-                    authorization: apiKey
-                }
+                numbers: phone
+            }
+        });
+
+        console.log("FAST2SMS RESPONSE:", response.data);
+
+        if (!response.data.return) {
+            return res.status(500).json({
+                success: false,
+                message: "SMS sending failed",
+                details: response.data
             });
-        } else {
-            // Development Mock
-            console.log(`[DEV MODE] Mock OTP for ${mobile}: ${otp}`);
         }
 
-        // Store OTP
-        otpStore.set(mobile, {
-            otp,
+        // Store OTP in memory for verification
+        const now = Date.now();
+        const expiresAt = now + 5 * 60 * 1000; // 5 minutes
+
+        otpStore.set(phone, {
+            otp: otp.toString(), // Store as string for strict comparison in verifyOtp
             expiresAt,
             lastSent: now,
-            attempts: (record?.attempts || 0) + 1
+            attempts: 0
         });
 
         return res.status(200).json({
@@ -64,10 +63,10 @@ exports.sendOtp = async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Send OTP Error:', error);
+        console.error("SEND OTP ERROR:", error.response?.data || error.message);
         return res.status(500).json({
             success: false,
-            message: error.message
+            message: "Internal Server Error"
         });
     }
 };
