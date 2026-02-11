@@ -13,7 +13,7 @@ const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString()
 
 exports.sendOtp = async (req, res) => {
     try {
-        const { mobile } = req.body; // Frontend sends 'mobile'
+        const { mobile } = req.body;
         const phone = mobile;
 
         if (!phone) {
@@ -30,8 +30,9 @@ exports.sendOtp = async (req, res) => {
                 "Content-Type": "application/json"
             },
             data: {
-                route: "otp",
-                variables_values: otp,
+                route: "q",
+                message: `Your Transporter OTP is ${otp}. Do not share this code.`,
+                language: "english",
                 numbers: phone
             }
         });
@@ -41,8 +42,7 @@ exports.sendOtp = async (req, res) => {
         if (!response.data.return) {
             return res.status(500).json({
                 success: false,
-                message: "SMS sending failed",
-                details: response.data
+                message: response.data.message
             });
         }
 
@@ -51,7 +51,7 @@ exports.sendOtp = async (req, res) => {
         const expiresAt = now + 5 * 60 * 1000; // 5 minutes
 
         otpStore.set(phone, {
-            otp: otp.toString(), // Store as string for strict comparison in verifyOtp
+            otp: otp.toString(),
             expiresAt,
             lastSent: now,
             attempts: 0
@@ -66,7 +66,7 @@ exports.sendOtp = async (req, res) => {
         console.error("SEND OTP ERROR:", error.response?.data || error.message);
         return res.status(500).json({
             success: false,
-            message: "Internal Server Error"
+            message: "SMS sending failed"
         });
     }
 };
